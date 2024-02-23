@@ -7,7 +7,7 @@ author: "Brendan Karadenes"
 
 SOURCE: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-06-20
 
-For my second blog post I am working with a UFO data set from the tidy tuesday library, originally taken from the National UFO Reporting Center. The data includes date, time, location, duration, and craft shape. I copy pasted US census data into an excel sheet to have state population data. I am most interested in the state, shape and duration variables. My question of interest is whether the shape has any impacted on the reported duration of the sightings and what states have had the most sightings. There are 96,429 observations in the data set. 
+For my second blog post I am working with a UFO data set from the tidy tuesday library, originally taken from the National UFO Reporting Center. The data includes date, time, location, duration, time of day, and craft shape. I copy pasted US census data into an excel sheet to have state population data. I am most interested in the state, year and time of day variables. My question of interest is how UFO sightings in the USA have trended over time and what time of day and states are most popular. There are 96,429 observations in the data set. 
 
 ```{r}
 # Read in data from tidy tuesday library
@@ -21,7 +21,7 @@ places <- tuesdata$`places`
 day_parts_map <- tuesdata$`day_parts_map`
 ```
 
-# Plot 1: Country vs. Shape
+# Plot 1: Sightings Per State
 
 ```{r}
 library(here)
@@ -69,9 +69,9 @@ theme(plot.title = element_text(hjust = .65))
 
 # Summary
 
-This map is displaying the number of UFO sightings in each US state, adjusted for differing population sizes. Based off of this visualization it seems that no particular region has the most UFO sightings with states fairly evenly spread out from coast to coast. New York has significantly more sightings than any other state per 100,000 people, while Virginia has the second most and significantly higher than the next state. 
+This map is displaying the number of UFO sightings in each US state, adjusted for differing population sizes. Based off of this visualization it seems that no particular region has the most UFO sightings with states fairly evenly spread out from coast to coast. New York has significantly more sightings than any other state per 100,000 people, while Virginia has the second most and significantly higher than the next state. States in white, like Nevada have seen minimal sightings per 100,000 people. 
 
-# Plot 2
+# Plot 2: Sightings Over Time
 
 ```{r}
 ufo_sightings$year <- substr(ufo_sightings$reported_date_time, 1, 4)
@@ -97,7 +97,7 @@ theme(plot.title = element_text(hjust = .25))
 
 The scatterplot above displays the number of UFO sightings in the USA over the past 100 years. The amount of sightings stayed fairly constant with a minimal amount of sightings until the mid-1990s when there began a steady increase in sightings until the mid 2010s. The amount of sightings peaked in 2014, with the number of sightings undergoing a sudden drop after. The amount of sightings has been decreasing from the peak in 2014 to 2023.
 
-# Plot 3
+# Plot 3: Sightings in Time of Day
 
 ```{r}
 time <- ufo_sightings %>%
@@ -123,7 +123,7 @@ The graph above displays the number of UFO sightings in the United States for ea
 
 # Conclusion
 
-Given the nature of the data I chose, it's difficult to tell whether each observation was actually thought to be seen someone or if they were just completely making it up. To address this I would have looked more carefully at the summary variables for each one, but there are so many observations that would be far too time consuming. If I had more time I would have looked into why there was such a large spike in the mid-1990s and why New York has so many more sightings per capita than any other state. I think it would be interesting to look into which UFO movies are based in each state or how many airports/military bases each state has that might make people think they are seeing UFOs in the sky.
+Given the nature of the data I chose, it's difficult to tell whether each observation was actually thought to be seen by someone or if they were just completely making it up. To address this I would have looked more carefully at the summary variables for each one, but there are so many observations that would be far too time consuming. If I had more time I would have looked into why there was such a large spike in the mid-1990s and why New York has so many more sightings per capita than any other state. I think it would be interesting to look into which UFO movies are based in each state or how many airports/military bases each state has that might make people think they are seeing UFOs in the sky.
 
 # Class Ideas
 
