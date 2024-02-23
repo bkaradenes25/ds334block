@@ -79,7 +79,7 @@ ufo_sightings$year <- substr(ufo_sightings$reported_date_time, 1, 4)
 
 ```{r}
 year_ufo <- ufo_sightings %>%
-  filter(country_code == "US")
+  filter(country_code == "US") %>%
   group_by(year) %>%
   summarise(nyear = n()) 
 ```
