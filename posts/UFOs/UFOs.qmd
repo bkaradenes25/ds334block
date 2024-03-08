@@ -1,13 +1,17 @@
 ---
 title: "UFOs"
 author: "Brendan Karadenes"
+date: "02-23-2024"
+categories: [analysis]
 ---
 
 # Introduction
 
-SOURCE: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-06-20
+
+
 
 For my second blog post I am working with a UFO data set from the tidy tuesday library, originally taken from the National UFO Reporting Center. The data includes date, time, location, duration, time of day, and craft shape. I copy pasted US census data into an excel sheet to have state population data. I am most interested in the state, year and time of day variables. My question of interest is how UFO sightings in the USA have trended over time and what time of day and states are most popular. There are 96,429 observations in the data set. 
+SOURCE: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-06-20
 
 ```{r}
 # Read in data from tidy tuesday library

@@ -6,12 +6,11 @@ categories: [analysis]
 ---
 
 
-
 # Introduction
 
-data source: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-16
 
-For this blog post I am working with a data set from NOAA National Weather Service Storm Prediction Center Severe Weather Maps, Graphics, and Data Page, taken from the tidy tuesday github. The data includes an id variable for each tornado, dates, times, fatalities, area, and state information. I am most interested in the year, property damage, length, width, and state  variables. There are 68693 observations in the data set. My question of interest is to find out how tornadoes have affected the USA from the period 1950-2021 and which states were hit the hardest.
+
+For this blog post I am working with a data set from NOAA National Weather Service Storm Prediction Center Severe Weather Maps, Graphics, and Data Page, taken from the tidy tuesday github. The data includes an id variable for each tornado, dates, times, fatalities, area, and state information. I am most interested in the year, property damage, length, width, and state variables. There are 68693 observations in the data set. My question of interest is to find out how tornadoes have affected the USA from the period 1950-2021 and which states were hit the hardest.
 
 ```{r}
 library(tidyverse)
@@ -37,7 +36,7 @@ ggplot(data = damage_tornados, mapping = aes(x = yr, y = area)) + geom_point(col
 
 # Summary
 
-In the scatterplot above, I plotted year versus area to see if total tornado area has changed during the time period from 1950-2021. According to the graph, it seems area remained roughly the same from 1950 to the mid 1990s, where area per year began a slight rise until 2021. The year 2011 seems to be an outlier, with a total tornado area of over 2,000,000 square miles above the next closest year. 
+In the scatterplot above, I plotted year versus area to see if total tornado area has changed during the time period from 1950-2021. According to the graph, it seems area remained roughly the same from 1950 to the mid 1990s, where area per year began a slight rise until 2021. The year 2011 seems to be an outlier, with a total tornado area of over 2,000,000 square miles above the next closest year.
 
 # Plot 2: Tornado Property Damage from 1950-2021
 
@@ -74,7 +73,7 @@ library(usmap)
 plot_usmap(data = tornado_mapData, values = "damage_bystate", color = "red") + scale_fill_continuous(name = "Property Damage ($)", label = scales::comma, low = "white", high = "green") + theme(legend.position = "right") + labs(title = "Tornado Property Damage in US States") + theme(plot.title = element_text(hjust = .65))
 ```
 
-The map above displays property damage by US state. During the period from 1950-2021, Texas, Alabama, and Oklaholma sustained the most property damage in dollars from tornadoes. Texas by far sustained the most significant damage with over $10 billion in losses over the 71 year period. Most of the states on the southeastern coast sustained significant damage, while west coast states suffered the least.
+The map above displays property damage by US state. During the period from 1950-2021, Texas, Alabama, and Oklaholma sustained the most property damage in dollars from tornadoes. Texas by far sustained the most significant damage with over \$10 billion in losses over the 71 year period. Most of the states on the southeastern coast sustained significant damage, while west coast states suffered the least.
 
 # Conclusion
 
@@ -83,6 +82,3 @@ One of the flaws would be I never looked into the trends in the number of tornad
 # Class Ideas
 
 The first two visualizations I chose to represent the data were scatterplots because you're able to see each point data point. This allows you to see the exact trend of the data and not just general summary statistics. They are also simple scatterplots that show the data and their trends. I didn't want to include any extra aestetic parts that might obsure the trends and make it difficult to read. I think they do a good job of maximizing the data-to-ink ratio, while still adding appropriate labels. For the map graph, I used a continuous scale to represent the property damage becuase the amount of money goes from low to high. I also thought the green color complimented the red well, making it easier to see. I chose a map becuase I thought it would be a good way to show what regions of the country were affected the most to see what areas suffered the most property damage. I also think a map would be more memorable for the viewer than another plot.
-
-
-

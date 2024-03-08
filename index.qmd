@@ -1,5 +1,5 @@
 ---
-title: "ds334block"
+title: "Visualizing Data"
 listing:
   contents: posts
   sort: "date desc"
